@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kolors Virtual Try-On</title>
+  <style>
+    /* General styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      background-color: white;
+      width: 70%;
+      max-width: 900px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .description {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    /* Upload section styles */
+    .upload-section {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .upload-card {
+      flex: 1;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-right: 20px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .upload-card:last-child {
+      margin-right: 0;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="file"] {
+      border: none;
+      font-size: 15px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    /* Button styles */
+    .btn-run {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-run:hover {
+      background-color: #0056b3;
+    }
+
+    /* Result Section */
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 15px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .upload-section {
+        flex-direction: column;
+      }
+
+      .upload-card {
+        margin-bottom: 20px;
+        margin-right: 0;
+      }
+
+      .btn-run {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Kolors Virtual Try-On</h1>
+    <p class="description">Experience virtual fashion at your fingertips! Upload your photo and a garment to see the magic happen.</p>
+
+    <div class="upload-section">
+      <div class="upload-card">
+        <label for="personImage">Upload Person Image:</label>
+        <input type="file" id="personImage" accept="image/*">
+      </div>
+      <div class="upload-card">
+        <label for="garmentImage">Upload Garment Image:</label>
+        <input type="file" id="garmentImage" accept="image/*">
+      </div>
+    </div>
+
+    <button class="btn-run" onclick="runTryOn()">Run Virtual Try-On</button>
+
+    <!-- Embed HuggingFace space here -->
+    <iframe id="tryOnIframe" src="https://huggingface.co/spaces/kolors/virtual-try-on"></iframe>
+  </div>
+
+  <script>
+    function runTryOn() {
+      // Show the embedded HuggingFace try-on space when the button is clicked
+      document.getElementById("tryOnIframe").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
